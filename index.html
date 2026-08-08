@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyFlow — Học 25 phút, nghỉ đúng lúc, ôn thi không rối</title>
+  <meta name="description" content="StudyFlow chia buổi ôn thi thành các phiên tập trung 25 phút, nhắc bạn nghỉ đúng lúc và ghi lại mình đã học bao nhiêu môn trong tuần." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dist/output.css" />
+</head>
+<body class="bg-surface font-body text-ink antialiased">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-pill focus:bg-ink focus:px-4 focus:py-2 focus:text-white">
+    Bỏ qua đến nội dung chính
+  </a>
+
+  <header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur">
+    <nav aria-label="Điều hướng chính" class="section flex items-center justify-between !py-4">
+      <a href="#main" class="font-display text-lg font-bold tracking-tight">
+        Study<span class="text-brand-600">Flow</span>
+      </a>
+
+      <ul class="hidden items-center gap-8 text-sm font-medium md:flex">
+        <li><a href="#tinh-nang-title" class="text-muted hover:text-ink">Tính năng</a></li>
+        <li><a href="#so-lieu-title" class="text-muted hover:text-ink">Số liệu</a></li>
+        <li><a href="#gia-title" class="text-muted hover:text-ink">Bảng giá</a></li>
+        <li><a href="#faq-title" class="text-muted hover:text-ink">Câu hỏi thường gặp</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a href="#gia-title" class="hidden text-sm font-semibold text-ink hover:text-brand-600 sm:inline">Đăng nhập</a>
+        <a href="#cta-title" class="btn btn-primary">Bắt đầu miễn phí</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section aria-labelledby="hero-title" class="section">
+      <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p class="eyebrow">Phiên tập trung cho sinh viên</p>
+          <h1 id="hero-title" class="mt-4 font-display text-5xl font-bold leading-[1.1] tracking-tight lg:text-6xl">
+            Mở app, bấm bắt đầu.
+            <span class="text-brand-600">25 phút sau</span>,
+            một môn đã xong tới trang cuối.
+          </h1>
+          <p class="mt-6 max-w-lg text-lg text-muted">
+            StudyFlow chia buổi ôn thi thành các phiên tập trung 25 phút, tự nhắc bạn nghỉ 5 phút đúng lúc,
+            và ghi lại mình đã học bao nhiêu môn trong tuần — không cần tự deal với bản thân mỗi lần mở sách.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#cta-title" class="btn btn-primary px-6 py-3 text-base">Bắt đầu phiên đầu tiên</a>
+            <a href="#tinh-nang-title" class="btn btn-ghost px-6 py-3 text-base">Xem cách hoạt động</a>
+          </div>
+          <p class="mt-4 text-sm text-muted">Miễn phí 3 phiên/ngày · Không cần thẻ ngân hàng</p>
+        </div>
+
+        <div class="flex justify-center lg:justify-end">
+          <div class="card flex w-full max-w-sm flex-col items-center gap-6 !p-10 text-center">
+            <span class="badge-accent" id="ring-subject">Đang học: Giải tích 2</span>
+            <svg viewBox="0 0 200 200" width="220" height="220" role="img" aria-label="Đồng hồ đếm ngược phiên tập trung, còn 18 phút 24 giây">
+              <circle cx="100" cy="100" r="88" fill="none" stroke="var(--color-line)" stroke-width="12" />
+              <circle id="ring-progress" cx="100" cy="100" r="88" fill="none" stroke="var(--color-brand-600)"
+                stroke-width="12" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="150"
+                transform="rotate(-90 100 100)" />
+              <text x="100" y="94" text-anchor="middle" font-family="Space Mono, monospace" font-size="34" font-weight="700" fill="var(--color-ink)" id="ring-time">18:24</text>
+              <text x="100" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="12" fill="var(--color-muted)">PHIÊN 25:00</text>
+            </svg>
+            <button type="button" id="ring-toggle" class="btn btn-primary w-full">Tạm dừng</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. LOGO KHÁCH HÀNG -->
+    <section aria-labelledby="khach-hang-title" class="section !py-14">
+      <h2 id="khach-hang-title" class="text-center font-display text-xs uppercase tracking-[0.25em] text-muted">
+        Sinh viên hơn 40 trường đang dùng StudyFlow
+      </h2>
+      <ul class="mt-8 grid grid-cols-2 gap-6 text-center sm:grid-cols-3 lg:grid-cols-5">
+        <li class="font-display text-sm font-bold tracking-wide text-muted">KỸ THUẬT</li>
+        <li class="font-display text-sm font-bold tracking-wide text-muted">KINH TẾ</li>
+        <li class="font-display text-sm font-bold tracking-wide text-muted">Y DƯỢC</li>
+        <li class="font-display text-sm font-bold tracking-wide text-muted">SƯ PHẠM</li>
+        <li class="font-display text-sm font-bold tracking-wide text-muted">LUẬT</li>
+      </ul>
+    </section>
+
+    <!-- 3. TÍNH NĂNG -->
+    <section aria-labelledby="tinh-nang-title" class="section">
+      <p class="eyebrow">Cách StudyFlow hoạt động</p>
+      <h2 id="tinh-nang-title" class="mt-4 max-w-xl font-display text-3xl font-bold tracking-tight lg:text-4xl">
+        Không phải app "quản lý toàn diện". Chỉ là một chiếc đồng hồ biết bạn đang học môn gì.
+      </h2>
+
+      <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <li class="card">
+          <h3 class="font-display text-lg font-bold">Phiên tập trung 25 phút</h3>
+          <p class="mt-2 text-sm text-muted">Đếm ngược, tự khóa thông báo, nhắc nghỉ đúng 5 phút rồi mới cho bắt đầu phiên tiếp theo.</p>
+        </li>
+        <li class="card">
+          <h3 class="font-display text-lg font-bold">Theo dõi theo môn</h3>
+          <p class="mt-2 text-sm text-muted">Mỗi phiên gắn với một môn học. Cuối tuần mở nhật ký là biết ngay môn nào đang bị bỏ bê.</p>
+        </li>
+        <li class="card">
+          <h3 class="font-display text-lg font-bold">Nhật ký học tập</h3>
+          <p class="mt-2 text-sm text-muted">Ghi lại số phiên, tổng số giờ và chuỗi ngày liên tục không bỏ buổi ôn.</p>
+        </li>
+        <li class="card">
+          <h3 class="font-display text-lg font-bold">Nhắc lịch ôn thi</h3>
+          <p class="mt-2 text-sm text-muted">Nhập ngày thi từng môn, StudyFlow tự chia số phiên cần học mỗi ngày cho tới lúc thi.</p>
+        </li>
+        <li class="card">
+          <h3 class="font-display text-lg font-bold">Chế độ im lặng</h3>
+          <p class="mt-2 text-sm text-muted">Chặn thông báo mạng xã hội trong lúc phiên đang chạy, tự mở lại khi hết giờ.</p>
+        </li>
+        <li class="card">
+          <h3 class="font-display text-lg font-bold">Đồng bộ nhiều thiết bị</h3>
+          <p class="mt-2 text-sm text-muted">Bắt đầu phiên trên điện thoại lúc ở thư viện, xem lại tiến độ trên máy tính lúc về nhà.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. SỐ LIỆU -->
+    <section aria-labelledby="so-lieu-title" class="section !py-16">
+      <div class="rounded-card bg-ink px-8 py-14 text-white lg:px-16">
+        <h2 id="so-lieu-title" class="eyebrow text-white/60">Sau một học kỳ</h2>
+        <ul class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <li>
+            <p class="font-display text-4xl font-bold text-accent-500">12.400+</p>
+            <p class="mt-1 text-sm text-white/70">phiên học hoàn thành trong tháng qua</p>
+          </li>
+          <li>
+            <p class="font-display text-4xl font-bold text-accent-500">68%</p>
+            <p class="mt-1 text-sm text-white/70">sinh viên giữ chuỗi 5 ngày học liên tục ở tuần đầu tiên</p>
+          </li>
+          <li>
+            <p class="font-display text-4xl font-bold text-accent-500">25 phút</p>
+            <p class="mt-1 text-sm text-white/70">độ dài một phiên mặc định, chỉnh được từ gói Sinh viên</p>
+          </li>
+          <li>
+            <p class="font-display text-4xl font-bold text-accent-500">40+</p>
+            <p class="mt-1 text-sm text-white/70">trường đại học có sinh viên đang dùng StudyFlow</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. CẢM NHẬN -->
+    <section aria-labelledby="cam-nhan-title" class="section">
+      <p class="eyebrow">Sinh viên nói gì</p>
+      <h2 id="cam-nhan-title" class="mt-4 font-display text-3xl font-bold tracking-tight lg:text-4xl">Trước và sau khi có một chiếc đồng hồ đếm ngược</h2>
+
+      <ul class="mt-12 grid gap-6 lg:grid-cols-3">
+        <li class="card">
+          <p class="text-ink">"Trước đây mình mở sách rồi lướt điện thoại. Giờ hết 25 phút chuông kêu, mình mới nhận ra mình vừa học liền một mạch."</p>
+          <p class="mt-4 text-sm font-semibold">Vy</p>
+          <p class="text-xs text-muted">Sinh viên năm 3, ngành Kế toán</p>
+        </li>
+        <li class="card">
+          <p class="text-ink">"Mình nhập ngày thi 3 môn, app tự chia mỗi ngày học môn nào. Đỡ hẳn cảnh tối trước thi mới lôi hết ra học."</p>
+          <p class="mt-4 text-sm font-semibold">Huy</p>
+          <p class="text-xs text-muted">Sinh viên năm 2, ngành Cơ khí</p>
+        </li>
+        <li class="card">
+          <p class="text-ink">"Nhật ký cuối tuần cho thấy mình học Anh văn có 2 phiên trong khi Toán tận 9 phiên. Mới biết mình đang né môn nào."</p>
+          <p class="mt-4 text-sm font-semibold">Thảo</p>
+          <p class="text-xs text-muted">Sinh viên năm 1, ngành Quản trị kinh doanh</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 6. BẢNG GIÁ -->
+    <section aria-labelledby="gia-title" class="section">
+      <p class="eyebrow">Bảng giá</p>
+      <h2 id="gia-title" class="mt-4 font-display text-3xl font-bold tracking-tight lg:text-4xl">Học thử miễn phí, nâng cấp khi thấy mình cần</h2>
+
+      <ul class="mt-12 grid gap-6 lg:grid-cols-3">
+        <li class="card flex flex-col">
+          <h3 class="font-display text-lg font-bold">Miễn phí</h3>
+          <p class="mt-2 font-display text-3xl font-bold">0đ</p>
+          <ul class="mt-6 flex-1 space-y-3 text-sm text-muted">
+            <li>3 phiên tập trung mỗi ngày</li>
+            <li>Theo dõi 1 môn học</li>
+            <li>Nhật ký 7 ngày gần nhất</li>
+          </ul>
+          <a href="#cta-title" class="btn btn-ghost mt-8">Bắt đầu miễn phí</a>
+        </li>
+        <li class="card flex flex-col border-brand-600 ring-2 ring-brand-600">
+          <span class="badge-accent w-fit">Được chọn nhiều nhất</span>
+          <h3 class="mt-3 font-display text-lg font-bold">Sinh viên</h3>
+          <p class="mt-2 font-display text-3xl font-bold">29.000đ<span class="text-sm font-normal text-muted">/tháng</span></p>
+          <ul class="mt-6 flex-1 space-y-3 text-sm text-muted">
+            <li>Phiên tập trung không giới hạn</li>
+            <li>Theo dõi tất cả môn học</li>
+            <li>Nhật ký toàn học kỳ</li>
+            <li>Tự chia lịch theo ngày thi</li>
+          </ul>
+          <a href="#cta-title" class="btn btn-primary mt-8">Nâng cấp gói Sinh viên</a>
+        </li>
+        <li class="card flex flex-col">
+          <h3 class="font-display text-lg font-bold">Nhóm học</h3>
+          <p class="mt-2 font-display text-3xl font-bold">79.000đ<span class="text-sm font-normal text-muted">/tháng, 5 người</span></p>
+          <ul class="mt-6 flex-1 space-y-3 text-sm text-muted">
+            <li>Phiên nhóm chạy đồng bộ</li>
+            <li>Bảng xếp hạng chuỗi ngày trong nhóm</li>
+            <li>Chia sẻ nhật ký với cả nhóm</li>
+          </ul>
+          <a href="#cta-title" class="btn btn-ghost mt-8">Tạo nhóm học</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section aria-labelledby="faq-title" class="section">
+      <p class="eyebrow">Câu hỏi thường gặp</p>
+      <h2 id="faq-title" class="mt-4 font-display text-3xl font-bold tracking-tight lg:text-4xl">Trước khi bắt đầu phiên đầu tiên</h2>
+
+      <dl class="mt-12 divide-y divide-line border-y border-line">
+        <div class="py-6">
+          <dt class="font-display font-bold">StudyFlow có tính giờ khi tắt màn hình điện thoại không?</dt>
+          <dd class="mt-2 text-sm text-muted">Có. Phiên vẫn chạy nền và vẫn rung nhắc khi hết 25 phút, kể cả khi màn hình đang tắt.</dd>
+        </div>
+        <div class="py-6">
+          <dt class="font-display font-bold">Nếu thoát app giữa phiên thì sao?</dt>
+          <dd class="mt-2 text-sm text-muted">Phiên đó dừng và không tính vào chuỗi ngày, nhưng số phút đã học trước đó vẫn được lưu vào nhật ký.</dd>
+        </div>
+        <div class="py-6">
+          <dt class="font-display font-bold">Đăng ký gói Miễn phí có cần thẻ ngân hàng không?</dt>
+          <dd class="mt-2 text-sm text-muted">Không. Chỉ cần số điện thoại hoặc email là dùng được ngay, không yêu cầu thông tin thanh toán.</dd>
+        </div>
+        <div class="py-6">
+          <dt class="font-display font-bold">Có dùng được trên máy tính không?</dt>
+          <dd class="mt-2 text-sm text-muted">Có. Tài khoản đồng bộ nên số phiên và nhật ký khớp nhau trên điện thoại và máy tính.</dd>
+        </div>
+        <div class="py-6">
+          <dt class="font-display font-bold">Có đổi được thời lượng phiên 25 phút không?</dt>
+          <dd class="mt-2 text-sm text-muted">Gói Sinh viên cho chỉnh từ 15 đến 50 phút mỗi phiên. Gói Miễn phí giữ cố định 25 phút.</dd>
+        </div>
+        <div class="py-6">
+          <dt class="font-display font-bold">Hủy gói Sinh viên có mất dữ liệu không?</dt>
+          <dd class="mt-2 text-sm text-muted">Không. Nhật ký vẫn được giữ nguyên, chỉ giới hạn tính năng lại theo gói Miễn phí.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 8. CTA -->
+    <section aria-labelledby="cta-title" class="section">
+      <div class="rounded-card bg-brand-600 px-8 py-16 text-center text-white lg:px-16">
+        <h2 id="cta-title" class="font-display text-3xl font-bold tracking-tight lg:text-4xl">
+          Buổi ôn thi tiếp theo bắt đầu lúc nào cũng được.
+        </h2>
+        <p class="mx-auto mt-4 max-w-md text-white/80">Cài đặt mất chưa tới 2 phút, không cần thẻ ngân hàng, học thử ngay phiên đầu tiên.</p>
+        <a href="#hero-title" class="btn mt-8 bg-white px-6 py-3 text-base text-brand-600 hover:bg-white/90">Bắt đầu phiên đầu tiên</a>
+      </div>
+    </section>
+
+    <!-- 9. LOGO / KHÁCH HÀNG bổ sung đã gộp ở trên; đây là section thứ 9: liên hệ nhanh -->
+    <section aria-labelledby="lien-he-title" class="section !py-16">
+      <div class="grid gap-8 rounded-card border border-line bg-surface-2 p-10 lg:grid-cols-2 lg:items-center">
+        <div>
+          <h2 id="lien-he-title" class="font-display text-2xl font-bold tracking-tight">Có câu hỏi chưa có trong FAQ?</h2>
+          <p class="mt-2 text-muted">Đội ngũ StudyFlow phản hồi trong vòng một ngày làm việc.</p>
+        </div>
+        <div class="flex flex-wrap gap-4 lg:justify-end">
+          <a href="mailto:hello@studyflow.vn" class="btn btn-ghost">Gửi email cho StudyFlow</a>
+          <a href="#faq-title" class="btn btn-primary">Xem câu hỏi thường gặp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 10. FOOTER -->
+  <footer class="border-t border-line">
+    <div class="section grid gap-10 !py-16 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <a href="#main" class="font-display text-lg font-bold tracking-tight">Study<span class="text-brand-600">Flow</span></a>
+        <p class="mt-3 max-w-xs text-sm text-muted">Ứng dụng lên lịch phiên tập trung cho sinh viên tự ôn thi.</p>
+      </div>
+      <div>
+        <h3 class="font-display text-sm font-bold uppercase tracking-wide">Sản phẩm</h3>
+        <ul class="mt-4 space-y-2 text-sm text-muted">
+          <li><a href="#tinh-nang-title" class="hover:text-ink">Tính năng</a></li>
+          <li><a href="#gia-title" class="hover:text-ink">Bảng giá</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-display text-sm font-bold uppercase tracking-wide">Hỗ trợ</h3>
+        <ul class="mt-4 space-y-2 text-sm text-muted">
+          <li><a href="#faq-title" class="hover:text-ink">Câu hỏi thường gặp</a></li>
+          <li><a href="#lien-he-title" class="hover:text-ink">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-display text-sm font-bold uppercase tracking-wide">Công ty</h3>
+        <ul class="mt-4 space-y-2 text-sm text-muted">
+          <li><a href="#hero-title" class="hover:text-ink">Về StudyFlow</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-line">
+      <p class="section !py-6 text-center text-xs text-muted">© 2026 StudyFlow. Đồ án học phần Thực Hành Thiết Kế Web.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
