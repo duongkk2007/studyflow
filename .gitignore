@@ -1,2 +1,8 @@
+# dependencies
 node_modules/
-dist/output.css
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
